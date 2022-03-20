@@ -14,6 +14,10 @@
 		</tbody>
 	</table>
 
+	<div id="post">
+		
+	</div>
+
 <script type="text/javascript">
 	var students1 = ["Affan","Rizwan","XYZ"];
 	var subjects = ["English","Maths","Science","Computer"];
@@ -33,6 +37,64 @@
 	}
 	console.log(data)
 	document.getElementById("content").innerHTML = data
+
+
+
+
+	const post = {};
+
+	post.userID = 922;
+	post.username = "Mark"
+	post.userprofile = "https://www.pinkvilla.com/files/styles/amp_metadata_content_image_min_696px_wide/public/decoding_nfts_what_are_nfts_and_how_do_they_work_all_you_need_to_know.jpg?itok=caHIT1ah"
+	post.post = "This world is going to end soon 🤔"
+	post.imagesPath = ["/public/images/0.png","https://123.com","https://123.com"]
+	post.type = "public"
+	post.likesCount = 120
+	post.likes = [{
+		"username":"luck",
+		"userprofile":"https://example.com/2.jpg",
+		"timestamp":"1678203213",
+		"likeType":"🤝"
+	},{
+		"username":"luck",
+		"userprofile":"https://example.com/2.jpg",
+		"timestamp":"1678203213",
+		"likeType":"🤝"
+	},{
+		"username":"luck",
+		"userprofile":"https://example.com/2.jpg",
+		"timestamp":"1678203213",
+		"likeType":"🤝"
+	}
+	]
+
+
+post.comments = [{
+	"username":"paul",
+	"content":"hello world",
+	"timestamp":"12323123",
+	"likesCount":2,
+	"likes":[{
+			"username":"luck",
+			"userprofile":"https://example.com/2.jpg",
+			"timestamp":"1678203213",
+			"likeType":"🤝"
+	}],
+	"replies":[{
+		"username":"undefinedHacker",
+		"content":"Your Account Is Hacked"
+	}]
+}]
+
+console.log(post)
+
+
+ var img = document.createElement("img")
+ img.src = post.userprofile
+ img.width = '200'
+ img.height = '200'
+ document.getElementById("post").append(img)
+
 </script>
 </body>
 </html>

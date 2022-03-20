@@ -93,32 +93,113 @@ let t = false;
 // }else{
 // 	console.log("User not found")
 //}
-var students1 = ["Affan","Rizwan","XYZ"];
-var subjects = ["English","Maths","Science","Computer"];
-var marks = [
-	[50,45,42,41],
-	[40,40,40,35],
-	[30,30,30,32]
-]
+// var students1 = ["Affan","Rizwan","XYZ"];
+// var subjects = ["English","Maths","Science","Computer"];
+// var marks = [
+// 	[50,45,42,41],
+// 	[40,40,40,35],
+// 	[30,30,30,32]
+// ]
 
-for(var i = 0; i < students1.length; i++){
+// for(var i = 0; i < students1.length; i++){
 	
-	for(var j = 0; j < subjects.length; j++){
-		console.log(students1[i] + " got "+marks[i][j] + " marks in "+ subjects[j])
-	}
+// 	for(var j = 0; j < subjects.length; j++){
+// 		console.log(students1[i] + " got "+marks[i][j] + " marks in "+ subjects[j])
+// 	}
 
+// }
+
+
+var nft = {
+	"title":"JSON",
+	"id":232,
+	"users":["hello","world"],
+	"content":{"length":"123","post":"Lorem Ipsum"}
 }
 
+console.log(nft.title)
+console.log(nft.users[1])
+console.log(nft.content.post)
+
+console.log(JSON.stringify(nft))
+nft = JSON.stringify(nft)
+console.log(nft.title)
+
+nft = JSON.parse(nft)
+console.log(nft)
+
+nft.title = "Not Available"
+
+console.log(nft)
+
+nft.hash = "hdsewccdsfesfes"
+
+console.log(nft)
+
+nft.users[1] = "land"
+
+nft.users.push("world")
+
+nft.users = ["asd","asdsadd","wwwww"]
+
+console.log(nft)
+
+nft.followers = []
+nft.followers.push({
+		"username":"mike",
+		"id":789
+	})
+console.log(nft)
 
 
+const post = {};
+
+post.userID = 922;
+post.username = "Mark"
+post.userprofile = "https://example.com/1.jpg"
+post.post = "This world is going to end soon 🤔"
+post.imagesPath = ["/public/images/0.png","https://123.com","https://123.com"]
+post.type = "public"
+post.likes = [{
+	"username":"luck",
+	"userprofile":"https://example.com/2.jpg",
+	"timestamp":"1678203213",
+	"likeType":"🤝"
+},{
+	"username":"luck",
+	"userprofile":"https://example.com/2.jpg",
+	"timestamp":"1678203213",
+	"likeType":"🤝"
+},{
+	"username":"luck",
+	"userprofile":"https://example.com/2.jpg",
+	"timestamp":"1678203213",
+	"likeType":"🤝"
+}
+]
 
 
+post.comments = [{
+	"username":"paul",
+	"content":"hello world",
+	"timestamp":"12323123",
+	"likesCount":2,
+	"likes":[{
+			"username":"luck",
+			"userprofile":"https://example.com/2.jpg",
+			"timestamp":"1678203213",
+			"likeType":"🤝"
+	}],
+	"replies":[{
+		"username":"undefinedHacker",
+		"content":"Your Account Is Hacked"
+	}]
+}]
+
+console.log(post)
 
 
-
-
-
-
+console.log("This Post Get " +post.likes.length+ " likes.")
 
 
 
