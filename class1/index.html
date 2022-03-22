@@ -45,7 +45,7 @@
 
 	post.userID = 922;
 	post.username = "Mark"
-	post.userprofile = "https://www.pinkvilla.com/files/styles/amp_metadata_content_image_min_696px_wide/public/decoding_nfts_what_are_nfts_and_how_do_they_work_all_you_need_to_know.jpg?itok=caHIT1ah"
+	post.userprofile = "https://scontent.fkhi3-1.fna.fbcdn.net/v/t1.6435-9/133114804_150715896839386_8515124983458015171_n.jpg?_nc_cat=100&ccb=1-5&_nc_sid=09cbfe&_nc_eui2=AeE0KPO_eNptIJ0xqIre5pSsQvb4CM3O-pJC9vgIzc76ksKfPfRYY4TP8QuRhiZdRQDhv3nGIUy83VWGJ92tbAg8&_nc_ohc=hHG4hPE_yE4AX9x3EOz&tn=KsIe9NExocDVy0EP&_nc_ht=scontent.fkhi3-1.fna&oh=00_AT-gsPvVQN7oQnkeDtTDM963NtI_fgqf_E58mEI9E1uvKA&oe=625F3D7F"
 	post.post = "This world is going to end soon 🤔"
 	post.imagesPath = ["/public/images/0.png","https://123.com","https://123.com"]
 	post.type = "public"
@@ -90,10 +90,38 @@ console.log(post)
 
 
  var img = document.createElement("img")
+ var username = document.createElement("p")
+ var postshow = document.createElement("p")
+ username.innerText = post.username
+ postshow.innerText = post.post
  img.src = post.userprofile
  img.width = '200'
  img.height = '200'
  document.getElementById("post").append(img)
+ document.getElementById("post").append(username)
+ document.getElementById("post").append(postshow)
+
+
+
+var htmlData = {
+
+	"h1":"This is Body",
+	"img":"https://scontent.fkhi3-1.fna.fbcdn.net/v/t1.6435-9/133114804_150715896839386_8515124983458015171_n.jpg?_nc_cat=100&ccb=1-5&_nc_sid=09cbfe&_nc_eui2=AeE0KPO_eNptIJ0xqIre5pSsQvb4CM3O-pJC9vgIzc76ksKfPfRYY4TP8QuRhiZdRQDhv3nGIUy83VWGJ92tbAg8&_nc_ohc=hHG4hPE_yE4AX9x3EOz&tn=KsIe9NExocDVy0EP&_nc_ht=scontent.fkhi3-1.fna&oh=00_AT-gsPvVQN7oQnkeDtTDM963NtI_fgqf_E58mEI9E1uvKA&oe=625F3D7F",
+	"p":"Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum"
+}
+
+
+for(htmlKeys in htmlData){
+	var l = document.createElement(htmlKeys)
+	if(htmlKeys == "img"){
+		l.src = htmlData[htmlKeys]
+	}else{
+		l.innerText = htmlData[htmlKeys]	
+	}
+	
+	document.getElementById("post").append(l)
+
+}
 
 </script>
 </body>

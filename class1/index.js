@@ -1,3 +1,5 @@
+var readline = require('readline');
+
 // var a = "helloworld";
 // // const a = "1";
 // //let a = "3";
@@ -110,46 +112,46 @@ let t = false;
 // }
 
 
-var nft = {
-	"title":"JSON",
-	"id":232,
-	"users":["hello","world"],
-	"content":{"length":"123","post":"Lorem Ipsum"}
-}
+// var nft = {
+// 	"title":"JSON",
+// 	"id":232,
+// 	"users":["hello","world"],
+// 	"content":{"length":"123","post":"Lorem Ipsum"}
+// }
 
-console.log(nft.title)
-console.log(nft.users[1])
-console.log(nft.content.post)
+// console.log(nft.title)
+// console.log(nft.users[1])
+// console.log(nft.content.post)
 
-console.log(JSON.stringify(nft))
-nft = JSON.stringify(nft)
-console.log(nft.title)
+// console.log(JSON.stringify(nft))
+// nft = JSON.stringify(nft)
+// console.log(nft.title)
 
-nft = JSON.parse(nft)
-console.log(nft)
+// nft = JSON.parse(nft)
+// console.log(nft)
 
-nft.title = "Not Available"
+// nft.title = "Not Available"
 
-console.log(nft)
+// console.log(nft)
 
-nft.hash = "hdsewccdsfesfes"
+// nft.hash = "hdsewccdsfesfes"
 
-console.log(nft)
+// console.log(nft)
 
-nft.users[1] = "land"
+// nft.users[1] = "land"
 
-nft.users.push("world")
+// nft.users.push("world")
 
-nft.users = ["asd","asdsadd","wwwww"]
+// nft.users = ["asd","asdsadd","wwwww"]
 
-console.log(nft)
+// console.log(nft)
 
-nft.followers = []
-nft.followers.push({
-		"username":"mike",
-		"id":789
-	})
-console.log(nft)
+// nft.followers = []
+// nft.followers.push({
+// 		"username":"mike",
+// 		"id":789
+// 	})
+// console.log(nft)
 
 
 const post = {};
@@ -196,10 +198,88 @@ post.comments = [{
 	}]
 }]
 
-console.log(post)
+// console.log(post)
 
 
-console.log("This Post Get " +post.likes.length+ " likes.")
+// console.log("This Post Get " +post.likes.length+ " likes.")
+
+
+
+const { stdin: input, stdout: output } = require('process');
+
+//var r1 = readline.createInterface({ input, output });
+//const r2 = readline.createInterface({ input, output });
+var ans1, ans2;
+
+// r1.question('What do you think of Node.js? ', (answer1) => {
+	
+// 	r1.question('Are you able to use it (Yes/No)? ', (answer2) => {
+// 	  // TODO: Log the answer in a database
+
+// 	  if(answer2 == "Yes" || answer2 == "No"){
+// 	  	console.log(`Answer 1: ${answer1}`);
+// 	  	console.log(`Answer 2: ${answer2}`);
+// 	  }else{
+// 	  	console.log("Invalid Answer")
+// 	  }
+// 	  r1.close();
+//   });
+
+// });
+
+
+
+// for(postData in post){
+// 	if(postData == "userID"){
+// 		console.log(post[postData])
+// 	}
+	
+// }
+// var postArray = Object.entries(post)
+// console.log(postArray)
+
+// var htmlData = {
+
+// 	"h1":"This is Body",
+// 	"div":[{
+// 		"p":"Lorem Ipsum"
+// 	}]
+// }
+
+
+function xyz(){
+	console.log("Hello World")
+}
+xyz()
+
+
+var abcd = ()=>{
+	console.log("Heloooooo!!!")
+}
+
+abcd()
+
+function jsonParser(_post){
+
+	for(data in _post){
+		console.log(data)
+	}
+}
+jsonParser({post:"1",data:"asd"});
+
+
+//// 22/03/2022
+/*
+	- github
+	- variables
+	- if condition
+	- loops
+	- array
+	- 2d array
+	- json
+	- functions (basics)
+	- html basics
+	- javascript in HTML document
 
 
 
