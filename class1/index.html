@@ -15,10 +15,13 @@
 	</table>
 
 	<div id="post">
-		
+		<h3>asd</h3>
+		<h3>asd</h3>
+		<h3>asd</h3>
 	</div>
 
-<script type="text/javascript">
+<script>
+
 	var students1 = ["Affan","Rizwan","XYZ"];
 	var subjects = ["English","Maths","Science","Computer"];
 	var marks = [
@@ -89,15 +92,15 @@ post.comments = [{
 console.log(post)
 
 
- var img = document.createElement("img")
+ var gmi = document.createElement("img")
  var username = document.createElement("p")
  var postshow = document.createElement("p")
  username.innerText = post.username
- postshow.innerText = post.post
- img.src = post.userprofile
- img.width = '200'
- img.height = '200'
- document.getElementById("post").append(img)
+ postshow.innerText = "lorem ipsum Lorem"
+ gmi.src = post.userprofile
+ gmi.width = '200'
+ gmi.height = '200'
+ document.getElementById("post").append(gmi)
  document.getElementById("post").append(username)
  document.getElementById("post").append(postshow)
 
@@ -115,11 +118,15 @@ for(htmlKeys in htmlData){
 	var l = document.createElement(htmlKeys)
 	if(htmlKeys == "img"){
 		l.src = htmlData[htmlKeys]
+		l.width = 150
+		l.height = 150
 	}else{
 		l.innerText = htmlData[htmlKeys]	
 	}
 	
 	document.getElementById("post").append(l)
+	var brk = document.createElement("hr")
+	document.getElementById("post").append(brk)
 
 }
 

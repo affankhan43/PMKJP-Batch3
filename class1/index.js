@@ -247,25 +247,25 @@ var ans1, ans2;
 // }
 
 
-function xyz(){
-	console.log("Hello World")
-}
-xyz()
+// function xyz(){
+// 	console.log("Hello World")
+// }
+// xyz()
 
 
-var abcd = ()=>{
-	console.log("Heloooooo!!!")
-}
+// var abcd = ()=>{
+// 	console.log("Heloooooo!!!")
+// }
 
-abcd()
+// abcd()
 
-function jsonParser(_post){
+// function jsonParser(_post){
 
-	for(data in _post){
-		console.log(data)
-	}
-}
-jsonParser({post:"1",data:"asd"});
+// 	for(data in _post){
+// 		console.log(data)
+// 	}
+// }
+// jsonParser({post:"1",data:"asd"});
 
 
 //// 22/03/2022
@@ -281,7 +281,116 @@ jsonParser({post:"1",data:"asd"});
 	- html basics
 	- javascript in HTML document
 
+	24/03
 
+	- functions
+	- promises
+	- async/await
+	- api calling
+*/
+
+
+function addition(a,b){
+	return a+b
+}
+
+function multiply(a,b){
+	return a*b
+}
+
+var a = addition(10, 15)
+var result = multiply(a,2)
+
+console.log("Result is: " + result)
+
+var studentData = {
+
+	"name":"Affan",
+	"ID":"452323",
+	"courses":[],
+	"addCourse": function (courseName){
+		this.courses.push(courseName)
+		return "Added Successfully"
+	},
+	"getCourse": ()=>{
+		var crs = this.courses
+		return crs
+	},
+	"changeID": (c)=>{
+		this.ID = c
+	}
+}
+
+console.log("Total enrolled courses : "+ studentData.courses)
+
+studentData.addCourse("English")
+studentData.addCourse("Maths")
+studentData.addCourse("Science")
+
+console.log("Total enrolled courses : "+ studentData.courses)
+console.log("Student ID is : "+studentData.ID)
+
+studentData.changeID(123)
+studentData.ID = 2222
+console.log(studentData)
+
+
+function one(){
+	return "Hi it's one"
+}
+
+function two(){
+	return "Hi It's Two"
+	// return  new Promise(function(resolve,reject){
+	// 	setTimeout(function(){
+	// 		//console.log("Hi it's two")
+	// 		resolve("Hi it's two")
+	// 	},3000)
+	// })
+	///return prm;
+}
+
+// async function two(){
+// 	await setTimeout(function(){
+// 		console.log("Hi it's two")
+// 		//return "Hi it's two"
+// 	},3000)
+// }
+
+function three(){
+	return "Hi it's three"
+}
+const setAsyncTimeout = (cb, timeout = 0) => new Promise((resolve,reject) => {
+    setTimeout(() => {
+        cb();
+        reject("Khatam tata bye bye");
+    }, timeout);
+});
+
+async function checking(){
+	 console.log(one())
+	 try{
+	 	await setAsyncTimeout(() => {
+	        console.log(two())
+	    	}, 1000);
+	 }catch(err){
+	 	console.log(err)
+	 }
+	 
+	 console.log(three())
+	  
+}
+checking()
+
+// console.log(one())
+// var data = await sleep(two(),3000)
+//console.log(data)
+//two().then(function(resolve) {
+	//console.log(resolve)
+//	console.log(three())
+//},function(reject){
+
+//})
 
 
 
