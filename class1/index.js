@@ -1,4 +1,5 @@
 var readline = require('readline');
+var sha256 = require('sha256');
 
 // var a = "helloworld";
 // // const a = "1";
@@ -402,7 +403,22 @@ function two(){
 
 // console.log(testapi)
 
+function arrBytesToHex(bytes) {
+  return bytes.map(function(x) { return padLeft(x.toString(16),2) }).join('')
+}
 
+function padLeft(orig, len) {
+  if (orig.length > len) return orig
+  return Array(len - orig.length + 1).join('0') + orig
+}
 
+var xyz = sha256.x2('hello')
+
+var hash = sha256("hello")
+var hash2 = sha256("hello", {asBytes:true})
+
+console.log("HASH # 3 -->"+xyz)
+console.log("HASH # 1 -->"+hash)
+console.log("HASH # 2 -->"+arrBytesToHex(hash2))
 
 
