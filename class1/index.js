@@ -287,6 +287,12 @@ var ans1, ans2;
 	- promises
 	- async/await
 	- api calling
+
+	27/03
+
+	- fetch
+	- import module npm
+	- export module
 */
 
 
@@ -357,30 +363,30 @@ function two(){
 // 	},3000)
 // }
 
-function three(){
-	return "Hi it's three"
-}
-const setAsyncTimeout = (cb, timeout = 0) => new Promise((resolve,reject) => {
-    setTimeout(() => {
-        cb();
-        reject("Khatam tata bye bye");
-    }, timeout);
-});
+// function three(){
+// 	return "Hi it's three"
+// }
+// const setAsyncTimeout = (cb, timeout = 0) => new Promise((resolve,reject) => {
+//     setTimeout(() => {
+//         cb();
+//         reject("Khatam tata bye bye");
+//     }, timeout);
+// });
 
-async function checking(){
-	 console.log(one())
-	 try{
-	 	await setAsyncTimeout(() => {
-	        console.log(two())
-	    	}, 1000);
-	 }catch(err){
-	 	console.log(err)
-	 }
+// async function checking(){
+// 	 console.log(one())
+// 	 try{
+// 	 	await setAsyncTimeout(() => {
+// 	        console.log(two())
+// 	    	}, 1000);
+// 	 }catch(err){
+// 	 	console.log(err)
+// 	 }
 	 
-	 console.log(three())
+// 	 console.log(three())
 	  
-}
-checking()
+// }
+// checking()
 
 // console.log(one())
 // var data = await sleep(two(),3000)
@@ -392,6 +398,9 @@ checking()
 
 //})
 
+// var testapi = fetch("https://randomuser.me/api/")
+
+// console.log(testapi)
 
 
 

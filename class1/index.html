@@ -34,11 +34,11 @@
 		
 		for(var j = 0; j < subjects.length; j++){
 			data += "<tr>" + students1[i] + " got "+marks[i][j] + " marks in "+ subjects[j] + "</tr>"
-			console.log(students1[i] + " got "+marks[i][j] + " marks in "+ subjects[j])
+			//console.log(students1[i] + " got "+marks[i][j] + " marks in "+ subjects[j])
 		}
 
 	}
-	console.log(data)
+	//console.log(data)
 	document.getElementById("content").innerHTML = data
 
 
@@ -89,20 +89,20 @@ post.comments = [{
 	}]
 }]
 
-console.log(post)
+// console.log(post)
 
 
- var gmi = document.createElement("img")
- var username = document.createElement("p")
- var postshow = document.createElement("p")
- username.innerText = post.username
- postshow.innerText = "lorem ipsum Lorem"
- gmi.src = post.userprofile
- gmi.width = '200'
- gmi.height = '200'
- document.getElementById("post").append(gmi)
- document.getElementById("post").append(username)
- document.getElementById("post").append(postshow)
+//  var gmi = document.createElement("img")
+//  var username = document.createElement("p")
+//  var postshow = document.createElement("p")
+//  username.innerText = post.username
+//  postshow.innerText = "lorem ipsum Lorem"
+//  gmi.src = post.userprofile
+//  gmi.width = '200'
+//  gmi.height = '200'
+//  document.getElementById("post").append(gmi)
+//  document.getElementById("post").append(username)
+//  document.getElementById("post").append(postshow)
 
 
 
@@ -114,21 +114,33 @@ var htmlData = {
 }
 
 
-for(htmlKeys in htmlData){
-	var l = document.createElement(htmlKeys)
-	if(htmlKeys == "img"){
-		l.src = htmlData[htmlKeys]
-		l.width = 150
-		l.height = 150
-	}else{
-		l.innerText = htmlData[htmlKeys]	
-	}
+// for(htmlKeys in htmlData){
+// 	var l = document.createElement(htmlKeys)
+// 	if(htmlKeys == "img"){
+// 		l.src = htmlData[htmlKeys]
+// 		l.width = 150
+// 		l.height = 150
+// 	}else{
+// 		l.innerText = htmlData[htmlKeys]	
+// 	}
 	
-	document.getElementById("post").append(l)
-	var brk = document.createElement("hr")
-	document.getElementById("post").append(brk)
+// 	document.getElementById("post").append(l)
+// 	var brk = document.createElement("hr")
+// 	document.getElementById("post").append(brk)
 
-}
+// }
+
+
+var testapi = fetch("https://randomuser.me/api/")
+.then(response=>response.json())
+.then(function(data2){
+	console.log(data2)
+})
+// .then(function(data2){
+// 	console.log(data2)
+// })
+
+//console.log(testapi)
 
 </script>
 </body>
