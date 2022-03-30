@@ -269,33 +269,6 @@ var ans1, ans2;
 // jsonParser({post:"1",data:"asd"});
 
 
-//// 22/03/2022
-/*
-	- github
-	- variables
-	- if condition
-	- loops
-	- array
-	- 2d array
-	- json
-	- functions (basics)
-	- html basics
-	- javascript in HTML document
-
-	24/03
-
-	- functions
-	- promises
-	- async/await
-	- api calling
-
-	27/03
-
-	- fetch
-	- import module npm
-	- export module
-*/
-
 
 function addition(a,b){
 	return a+b
@@ -421,4 +394,41 @@ console.log("HASH # 3 -->"+xyz)
 console.log("HASH # 1 -->"+hash)
 console.log("HASH # 2 -->"+arrBytesToHex(hash2))
 
+
+
+//// 22/03/2022
+/*
+	- github
+	- variables
+	- if condition
+	- loops
+	- array
+	- 2d array
+	- json
+	- functions (basics)
+	- html basics
+	- javascript in HTML document
+
+	24/03
+
+	- functions
+	- promises
+	- async/await
+	- api calling
+
+	27/03
+
+	- fetch
+	- import module npm
+	- export module
+
+	29/03
+
+	- modules
+	- export
+	- import
+	- classes
+
+	
+*/
 
