@@ -1,0 +1,14 @@
+{
+  "name": "learnexpress",
+  "version": "1.0.6",
+  "description": "Getting started with express",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "affan",
+  "license": "ISC",
+  "devDependencies": {
+    "express": "^4.17.3"
+  }
+}

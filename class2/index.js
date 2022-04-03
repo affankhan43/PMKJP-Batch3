@@ -43,36 +43,41 @@ var trees = new animal("Tiger","Black");
 	- lastindexOf
 	- startsWith
 	- EndsWith
+
 	- Math
 	- Inheritance
 
+	1/April/2022
 
+	- STATIC
+	- Prototypes
+	- Express Documentation
 */
 
 var contentArray = ["hello weo","Pakistan","India"]
-console.log(contentArray.splice(1,1))
+//console.log(contentArray.splice(1,1))
 var content = "HelloWorld 123";
-console.log(content.slice(-5,-1))
+//console.log(content.slice(-5,-1))
 
 
 var content2 = "Helloworld Lorem Ipsum.,..."
-console.log(contentArray[0].substring(0,5))
+//console.log(contentArray[0].substring(0,5))
 
 var content3 = "LoremIpsum Random Para"
 
-console.log(content3.substr(6,6))
+// console.log(content3.substr(6,6))
 
-console.log(content3.indexOf("Para"))
+// console.log(content3.indexOf("Para"))
 
-console.log(content3.lastIndexOf("Para",20))
+// console.log(content3.lastIndexOf("Para",20))
 
-console.log(content3.startsWith("L"))
+//console.log(content3.startsWith("L"))
 
-console.log(content3.endsWith("Para"))
+//console.log(content3.endsWith("Para"))
 
 var fileName = "affan.khan,627@gmail.com"
 
-console.log(fileName.split("@")[0].split(",")[0])
+//console.log(fileName.split("@")[0].split(",")[0])
 
 class grandParent{
 
@@ -122,20 +127,59 @@ class grandChild extends child{
 		this.gcDOB
 	}
 
+
+
 }
 
 //var newBase = new base();
 var newChild = new grandChild("John","1900-01-01","Mike","1930-03-09","XYZ","2011-09-30");
 
 //console.log("His Parent Details are "+ newChild.gpbio())
-console.log("His details are "+newChild.thirdBio());
+//console.log("His details are "+newChild.thirdBio());
 
 
 
 
+class Cars{
+	static wheels = 4;
+	static seats = "available"
+	constructor(name,model){
+		this.name = name
+		this.model = model
+	}
+
+	carModel(){
+		return this.model
+	}
+
+	static horn(){
+		return "!!!!!!!!"
+	}
+}
+
+var car1 = new Cars("mehran","1999");
+console.log(car1.carModel())
+console.log(Cars.horn())
+console.log(Cars.wheels)
+console.log(Math.PI)
 
 
+function Line(x,y){
+	this.x = x;
+	this.y = y;
+	this.length = function(){
+		return this.x - this.y
+	}
+}
 
+Line.prototype.z = 123
+Line.prototype.printer = function(){
+	console.log("Hello World")
+}
+var l1 = new Line(1,2)
+
+console.log(l1.__proto__.z)
+l1.__proto__.printer()
 
 
 
