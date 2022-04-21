@@ -44,6 +44,23 @@ routes.get('/get/:id', (req,res)=>{
   res.json({"success":false,"error":"invalid Request"})
 });
 
+routes.post('/checkUser/:id',(req,res)=>{
+	console.log(req.body)
+	if(req.body.name && typeof req.body.name == "string"){
+		res.json({
+			"success":true,
+			"id":req.params.id
+		})	
+	}else{
+		res.json({
+			"success":false,
+			"error":"Missing Name"
+		})
+	}
+	
+
+
+})
 routes.get('/flying/history/:id/:from-:to', (req,res)=>{
   console.log(req.params)
   if(req.params.id && parseInt(req.params.id) <= 1000 && parseInt(req.params.id) != 0){

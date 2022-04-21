@@ -31,3 +31,6 @@ Tue, 19 Apr 2022 10:50:11 GMT  IP:::1 Device:desktop  URL:/users/flying/history/
 Tue, 19 Apr 2022 10:57:13 GMT  IP:::1 Device:desktop  URL:/users/flying/history/123/get/karachi-khatmando
 Tue, 19 Apr 2022 11:27:07 GMT  IP:::1 Device:desktop  URL:/content
 Tue, 19 Apr 2022 11:27:13 GMT  IP:::1 Device:desktop  URL:/content
+Thu, 21 Apr 2022 10:32:37 GMT  IP:::1 Device:desktop  URL:/home
+Thu, 21 Apr 2022 10:32:39 GMT  IP:::1 Device:desktop  URL:/favicon.ico
+Thu, 21 Apr 2022 10:35:01 GMT  IP:::1 Device:desktop  URL:/testing
