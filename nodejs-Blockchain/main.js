@@ -39,6 +39,16 @@ class Block{
 // var newblock = new Block('123213',{"value":"asdasd"},123,"asdsd");
 //console.log(newblock)
 
+class Transaction{
+	constructor(fromAddress, toAddress, amount){
+		this.txid = uuidv4().split('-').join("")
+		this.from = fromAddress
+		this.to = toAddress;
+		this.amount = amount
+	}
+}
+
+
 class Blockchain{
 	mempool = []
 	chain = []
@@ -54,7 +64,8 @@ class Blockchain{
 		console.log('Hi! We create Genesis')
 		//this.mempool = []
 		//reward transaction
-		this.createTx("0x00000","Affan",10);
+		var rewardTx = new Transaction("0x00000","Affan",10)
+		this.createTx(rewardTx);
 		//console.log(this.mempool)
 		return newblock;
 	}
@@ -68,24 +79,13 @@ class Blockchain{
 		console.log("Hi! We got new blocknumber # "+(this.chain.length-1))
 		this.mempool = []
 		//reward transaction
-		this.createTx("0x00000","Affan",10);
+		var rewardTx = new Transaction("0x00000","Affan",10)
+		this.createTx(rewardTx);
 	}
 
 
-	createTx(fromAddress, toAddress, value){
-		var fromBalance = this.getBalance(fromAddress)
-		if(fromBalance > value || fromAddress == "0x00000"){
-			var tx = {
-				"txid":uuidv4().split('-').join(""),
-				"from":fromAddress,
-				"to":toAddress,
-				"amount":value
-			}
-			this.mempool.push(tx)
-		}else{
-			console.log("insuffcient Balance")
-		}
-		
+	createTx(txObj){
+		this.mempool.push(txObj)
 	}
 
 	isChainValid(){
@@ -141,28 +141,34 @@ class Blockchain{
 
 }
 
+
+module.exports = {Blockchain,Transaction}
+//module.exports.Block = Block
+//module.exports = Transaction
 //console.log(uuidv4().split('-').join(""))
-var xyzNetwork = new Blockchain();
-xyzNetwork.mineNewBlock()
+// var xyzNetwork = new Blockchain();
+// xyzNetwork.mineNewBlock()
 
-xyzNetwork.createTx("address1","address2",123)
-xyzNetwork.createTx("address2","address3",543)
-//xyzNetwork.addNewBlock({"value":"asdsd"})
-//xyzNetwork.addNewBlock({"value":"asdsd"})
+// var newTx = new Transaction("address1","address2",10);
+// xyzNetwork.createTx(newTx)
+
+// //xyzNetwork.addNewBlock({"value":"asdsd"})
+// //xyzNetwork.addNewBlock({"value":"asdsd"})
 
 
 
-xyzNetwork.mineNewBlock()
-xyzNetwork.createTx("Affan","address3",1)
-xyzNetwork.mineNewBlock()
-xyzNetwork.mineNewBlock()
-xyzNetwork.mineNewBlock()
-// xyzNetwork.chain[2].transactions[0].from = "affan"
-//console.log(xyzNetwork)
-console.log(xyzNetwork.getTransactions())
-console.log(xyzNetwork.getBalance("Affan"))
-console.log(xyzNetwork.chain[xyzNetwork.chain.length-1].height)
-//console.log("Is chain Valid--->>  "+xyzNetwork.isChainValid())
+// xyzNetwork.mineNewBlock()
+// var secondTx = new Transaction("Affan","address2",10)
+// xyzNetwork.createTx(secondTx)
+// xyzNetwork.mineNewBlock()
+// xyzNetwork.mineNewBlock()
+// xyzNetwork.mineNewBlock()
+// // xyzNetwork.chain[2].transactions[0].from = "affan"
+// //console.log(xyzNetwork)
+// console.log(xyzNetwork.getTransactions())
+// console.log(xyzNetwork.getBalance("Affan"))
+// console.log(xyzNetwork.chain[xyzNetwork.chain.length-1].height)
+// //console.log("Is chain Valid--->>  "+xyzNetwork.isChainValid())
 
 
 
