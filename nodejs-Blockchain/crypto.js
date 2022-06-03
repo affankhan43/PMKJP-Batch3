@@ -15,14 +15,14 @@ var onlyPubkey = ec.keyFromPublic("045736f6a888c32832ad09683e50919a78fecba5b192b
 var key2 = ec.genKeyPair();
 
 
-var msg = [123,354,63,63,21,6];
+var msg = "Hello World";
 var msg2 = [123,354,63,63,21,611,1];
 var signature = key.sign(msg);
 var derSign = signature.toDER();
 //console.log(derSign)
 
 
-console.log(key.verify(msg, derSign));
+console.log(onlyPubkey.verify(msg, derSign));
 
 
 var privateKey = key.getPrivate('hex')

@@ -1,5 +1,8 @@
 var sha256 = require('sha256')
 var { v4:uuidv4 } = require('uuid')
+var EC = require('elliptic').ec
+var ec = new EC('secp256k1');
+
 
 class Block{
 	constructor(timestamp,transactions,nonce,prevHash,height){
@@ -40,11 +43,13 @@ class Block{
 //console.log(newblock)
 
 class Transaction{
+	sign = null
 	constructor(fromAddress, toAddress, amount){
 		this.txid = uuidv4().split('-').join("")
 		this.from = fromAddress
 		this.to = toAddress;
 		this.amount = amount
+		this.sign = null;
 	}
 }
 
@@ -65,7 +70,7 @@ class Blockchain{
 		//this.mempool = []
 		//reward transaction
 		var rewardTx = new Transaction("0x00000","Affan",10)
-		this.createTx(rewardTx);
+		this.createTxAndSign(null,rewardTx);
 		//console.log(this.mempool)
 		return newblock;
 	}
@@ -80,12 +85,36 @@ class Blockchain{
 		this.mempool = []
 		//reward transaction
 		var rewardTx = new Transaction("0x00000","Affan",10)
-		this.createTx(rewardTx);
+		this.createTxAndSign(null,rewardTx);
 	}
 
 
-	createTx(txObj){
-		this.mempool.push(txObj)
+	createTxAndSign(key,txObj){
+		if(txObj.from != "0x00000"){
+			var keyFromPriv = ec.keyFromPrivate(key,'hex');
+			var publicKey = keyFromPriv.getPublic().encode('hex');
+			if(publicKey == txObj.from){
+				var signTx = keyFromPriv.sign(JSON.stringify(txObj));
+				var signatureHash = signTx.toDER();
+				txObj.sign = signatureHash;
+				this.mempool.push(txObj)
+			}else{
+				return "Invalid Signature"
+			}
+			
+		}else{
+			this.mempool.push(txObj)
+		}
+	}
+
+	validateTx(txObj){
+		var fromKey = txObj.from;
+		var signhash = txObj.sign;
+
+		var msg = txObj
+		msg.sign = null
+		var pubKey = ec.keyFromPublic(fromKey,'hex')
+		return pubKey.verify(JSON.stringify(msg),signhash)
 	}
 
 	isChainValid(){
@@ -142,16 +171,22 @@ class Blockchain{
 }
 
 
-module.exports = {Blockchain,Transaction}
+//module.exports = {Blockchain,Transaction}
 //module.exports.Block = Block
 //module.exports = Transaction
 //console.log(uuidv4().split('-').join(""))
-// var xyzNetwork = new Blockchain();
-// xyzNetwork.mineNewBlock()
+var xyzNetwork = new Blockchain();
+xyzNetwork.mineNewBlock()
 
-// var newTx = new Transaction("address1","address2",10);
-// xyzNetwork.createTx(newTx)
-
+var newTx = new Transaction(
+	"045736f6a888c32832ad09683e50919a78fecba5b192b5b1ed4e8413ffca3c3401fc60ed5a795bf88497bf11af903341c9f4a42247f03137aa43af469ae4d5343e",
+	"address2",
+	10
+);
+console.log(xyzNetwork.createTxAndSign("0bcdc02443814b5021f75ce117f732460e268127eac5b13540b9c660a5adcf76",newTx))
+xyzNetwork.mineNewBlock()
+console.log(xyzNetwork.chain[2].transactions[0])
+console.log(xyzNetwork.validateTx(xyzNetwork.chain[2].transactions[1]))
 // //xyzNetwork.addNewBlock({"value":"asdsd"})
 // //xyzNetwork.addNewBlock({"value":"asdsd"})
 
@@ -159,13 +194,13 @@ module.exports = {Blockchain,Transaction}
 
 // xyzNetwork.mineNewBlock()
 // var secondTx = new Transaction("Affan","address2",10)
-// xyzNetwork.createTx(secondTx)
+// xyzNetwork.createTxAndSign(secondTx)
 // xyzNetwork.mineNewBlock()
 // xyzNetwork.mineNewBlock()
 // xyzNetwork.mineNewBlock()
 // // xyzNetwork.chain[2].transactions[0].from = "affan"
 // //console.log(xyzNetwork)
-// console.log(xyzNetwork.getTransactions())
+console.log(xyzNetwork.getTransactions())
 // console.log(xyzNetwork.getBalance("Affan"))
 // console.log(xyzNetwork.chain[xyzNetwork.chain.length-1].height)
 // //console.log("Is chain Valid--->>  "+xyzNetwork.isChainValid())
