@@ -3,7 +3,6 @@ var { v4:uuidv4 } = require('uuid')
 var EC = require('elliptic').ec
 var ec = new EC('secp256k1');
 
-
 class Block{
 	constructor(timestamp,transactions,nonce,prevHash,height){
 		this.timestamp = timestamp
@@ -93,6 +92,10 @@ class Blockchain{
 		if(txObj.from != "0x00000"){
 			var keyFromPriv = ec.keyFromPrivate(key,'hex');
 			var publicKey = keyFromPriv.getPublic().encode('hex');
+
+			if(this.getBalance(publicKey) < txObj.amount ){
+				return "Insufficient Balance"
+			}
 			if(publicKey == txObj.from){
 				var signTx = keyFromPriv.sign(JSON.stringify(txObj));
 				var signatureHash = signTx.toDER();
@@ -110,7 +113,6 @@ class Blockchain{
 	validateTx(txObj){
 		var fromKey = txObj.from;
 		var signhash = txObj.sign;
-
 		var msg = txObj
 		msg.sign = null
 		var pubKey = ec.keyFromPublic(fromKey,'hex')
@@ -171,40 +173,39 @@ class Blockchain{
 }
 
 
-//module.exports = {Blockchain,Transaction}
-//module.exports.Block = Block
-//module.exports = Transaction
-//console.log(uuidv4().split('-').join(""))
+module.exports = {Blockchain,Transaction}
+//console.log(process.argv)
+
+/// Initiate Blockchain
 var xyzNetwork = new Blockchain();
+
+
+/// Mine new block
 xyzNetwork.mineNewBlock()
 
+
+/// Tx object creation
 var newTx = new Transaction(
 	"045736f6a888c32832ad09683e50919a78fecba5b192b5b1ed4e8413ffca3c3401fc60ed5a795bf88497bf11af903341c9f4a42247f03137aa43af469ae4d5343e",
 	"address2",
 	10
 );
+
+/// signing tx and adding to mempool
 console.log(xyzNetwork.createTxAndSign("0bcdc02443814b5021f75ce117f732460e268127eac5b13540b9c660a5adcf76",newTx))
+
+
+/// Mine new block
 xyzNetwork.mineNewBlock()
-console.log(xyzNetwork.chain[2].transactions[0])
-console.log(xyzNetwork.validateTx(xyzNetwork.chain[2].transactions[1]))
-// //xyzNetwork.addNewBlock({"value":"asdsd"})
-// //xyzNetwork.addNewBlock({"value":"asdsd"})
 
 
-
-// xyzNetwork.mineNewBlock()
-// var secondTx = new Transaction("Affan","address2",10)
-// xyzNetwork.createTxAndSign(secondTx)
-// xyzNetwork.mineNewBlock()
-// xyzNetwork.mineNewBlock()
-// xyzNetwork.mineNewBlock()
-// // xyzNetwork.chain[2].transactions[0].from = "affan"
-// //console.log(xyzNetwork)
+//print all confirmed txs
 console.log(xyzNetwork.getTransactions())
-// console.log(xyzNetwork.getBalance("Affan"))
-// console.log(xyzNetwork.chain[xyzNetwork.chain.length-1].height)
-// //console.log("Is chain Valid--->>  "+xyzNetwork.isChainValid())
 
+
+
+//testing tx is valid or not
+//console.log(xyzNetwork.validateTx(xyzNetwork.chain[2].transactions[1]))
 
 
 

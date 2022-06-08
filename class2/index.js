@@ -1,4 +1,4 @@
-//var { addition,sub,adddiv } = require('./mathFuncs.js') 
+var { addition,sub,adddiv } = require('./mathFuncs.js') 
 import animal from './mathFuncs.js'
 
 function add(){
